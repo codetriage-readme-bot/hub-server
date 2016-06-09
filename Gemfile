@@ -1,18 +1,10 @@
 source 'https://rubygems.org'
-
-
-gem 'rails', '4.2.6'
-
-gem 'rails-api'
-
+gem 'rails', '5.0.0.rc1'
 gem 'spring', :group => :development
-
-
 gem 'mysql2'
-
-gem 'devise_token_auth'
-
+gem 'devise_token_auth', git: 'git://github.com/lynndylanhurley/devise_token_auth.git'
 gem 'omniauth'
+gem 'devise', '4.0.0.rc2'
 
 
 # To use ActiveModel has_secure_password
