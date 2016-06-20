@@ -21,3 +21,4 @@ gem 'devise', '4.0.0.rc2'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+gem "active_model_serializers", github: "rails-api/active_model_serializers", tag: "v0.10.0.rc5"
