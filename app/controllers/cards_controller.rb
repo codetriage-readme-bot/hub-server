@@ -10,5 +10,19 @@ class CardsController < ApplicationController
   end
 
   def create
+    @card = Card.new(card_params)
+
+    if @card.save
+      render json: @card
+    else
+      render json: @card, :status => 422
+    end
   end
+
+  private
+
+  def card_params
+     params.require(:data).require(:attributes).permit(:title, :description)
+  end
+
 end
