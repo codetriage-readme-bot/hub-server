@@ -13,6 +13,8 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
 
     if @card.save
+      @card.users << User.find(params[:data][:relationships][:users][:data]) if params[:data][:relationships][:users][:data]
+
       render json: @card
     else
       render json: @card, :status => 422
