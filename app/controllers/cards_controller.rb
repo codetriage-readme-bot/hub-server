@@ -13,7 +13,8 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
 
     if @card.save
-      @card.users << User.find(params[:data][:relationships][:users][:data]) if params[:data][:relationships][:users][:data]
+      # @card.users << User.find(params[:data][:relationships][:users][:data]) if params[:data][:relationships][:users][:data]
+      @card.users << User.find(user_params)
 
       render json: @card
     else
@@ -31,6 +32,10 @@ class CardsController < ApplicationController
   end
 
   private
+
+  def user_params
+     params.require(:data).require(:relationships).require(:users).permit(data: [:id]).require(:data).map(&:values)
+  end
 
   def card_params
      params.require(:data).require(:attributes).permit(:title, :description)
