@@ -39,7 +39,7 @@ class CardsController < ApplicationController
   end
 
   def card_params
-     params.require(:data).require(:attributes).permit(:title, :description)
+     params.require(:data).require(:attributes).permit(:title, :description, :type)
   end
 
 end
