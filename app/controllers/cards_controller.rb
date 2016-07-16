@@ -35,11 +35,10 @@ class CardsController < ApplicationController
   private
 
   def user_params
-     params.require(:data).require(:relationships).require(:users).permit(data: [:id]).require(:data).map(&:values)
+    params.require(:data).require(:relationships).require(:users).permit(data: [:id]).require(:data).map(&:values)
   end
 
   def card_params
-     params.require(:data).require(:attributes).permit(:title, :description, :type)
+    params.require(:data).require(:attributes).permit(:title, :description, :type)
   end
-
 end
