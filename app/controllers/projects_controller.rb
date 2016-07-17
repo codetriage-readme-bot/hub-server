@@ -21,6 +21,17 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update
+    @project = Project.find(params[:id])
+    if @project.update_attributes(project_params)
+      # @project.users << User.find(user_params)
+
+      render json: @project
+    else
+      render json: @project, status: 422
+    end
+  end
+
   private
 
   def user_params
