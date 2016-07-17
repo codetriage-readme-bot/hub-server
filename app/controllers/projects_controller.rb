@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      # @project.users << User.find(user_params)
+      @project.users << User.find(user_params)
 
       render json: @project
     else
@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
-      # @project.users << User.find(user_params)
+      @project.users << User.find(user_params)
 
       render json: @project
     else
