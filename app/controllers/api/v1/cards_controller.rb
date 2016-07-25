@@ -7,7 +7,7 @@ module Api
       end
 
       def show
-        @card = Card.find(params[:id])
+        @card = Card.friendly.find(params[:id])
         render json: @card
       end
 
