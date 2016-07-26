@@ -9,5 +9,11 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
+
+  def slug_candidates
+    [
+      :name
+    ]
+  end
 end

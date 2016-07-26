@@ -5,5 +5,12 @@ class Card < ActiveRecord::Base
   belongs_to :project
 
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
+
+  def slug_candidates
+    [
+      :title,
+      [:title, :project_id]
+    ]
+  end
 end

@@ -3,5 +3,11 @@ class Project < ApplicationRecord
   has_many :cards
 
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
+
+  def slug_candidates
+    [
+      :title
+    ]
+  end
 end
