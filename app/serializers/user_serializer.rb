@@ -3,4 +3,5 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :cards
   has_many :projects
+  has_many :teams
 end

@@ -7,7 +7,7 @@ module Api
       end
 
       def show
-        @project =Project.friendly.find(params[:id])
+        @project = Project.friendly.find(params[:id])
         render json: @project
       end
 

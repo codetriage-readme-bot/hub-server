@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725215128) do
+ActiveRecord::Schema.define(version: 20160929195411) do
 
   create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -41,6 +41,20 @@ ActiveRecord::Schema.define(version: 20160725215128) do
     t.integer "project_id"
     t.integer "user_id"
     t.index ["project_id", "user_id"], name: "index_projects_users_on_project_id_and_user_id", using: :btree
+  end
+
+  create_table "teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "slug"
+  end
+
+  create_table "teams_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "team_id"
+    t.integer "user_id"
+    t.index ["team_id", "user_id"], name: "index_teams_users_on_team_id_and_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
