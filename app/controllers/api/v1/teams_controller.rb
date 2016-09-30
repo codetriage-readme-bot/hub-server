@@ -23,6 +23,17 @@ module Api
         end
       end
 
+      def update
+        @team = Team.find(params[:id])
+        if @team.update_attributes(team_params)
+          @team.users << User.find(user_params)
+
+          render json: @team
+        else
+          render json: @team, status: 422
+        end
+      end
+
       private
 
       def user_params
