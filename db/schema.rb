@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929195411) do
+ActiveRecord::Schema.define(version: 20161002195430) do
 
   create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160929195411) do
     t.string   "type"
     t.integer  "project_id"
     t.string   "slug"
+    t.string   "status"
     t.index ["project_id"], name: "index_project_id", using: :btree
   end
 

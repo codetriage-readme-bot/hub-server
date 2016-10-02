@@ -34,6 +34,11 @@ module Api
         end
       end
 
+      def destroy
+        @card = Card.find(params[:id])
+        @card.destroy
+      end
+
       private
 
       def user_params
@@ -41,7 +46,7 @@ module Api
       end
 
       def card_params
-        params.require(:data).require(:attributes).permit(:title, :description, :type, :project_id)
+        params.require(:data).require(:attributes).permit(:title, :description, :type, :project_id, :status)
       end
     end
   end
