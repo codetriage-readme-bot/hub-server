@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002195430) do
+ActiveRecord::Schema.define(version: 20161115183535) do
 
   create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.string   "type"
     t.integer  "project_id"
     t.string   "slug"
-    t.string   "status"
+    t.string   "status",                    default: "unarchived"
     t.index ["project_id"], name: "index_project_id", using: :btree
   end
 
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20161002195430) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "slug"
+    t.string   "status"
   end
 
   create_table "projects_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

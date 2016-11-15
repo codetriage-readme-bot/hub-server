@@ -41,7 +41,7 @@ module Api
       end
 
       def project_params
-        params.require(:data).require(:attributes).permit(:title, :description)
+        params.require(:data).require(:attributes).permit(:title, :description, :status)
       end
     end
   end
