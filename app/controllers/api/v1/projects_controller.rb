@@ -34,6 +34,11 @@ module Api
         end
       end
 
+      def destroy
+        @project = Project.find(params[:id])
+        @project.destroy
+      end
+
       private
 
       def user_params
