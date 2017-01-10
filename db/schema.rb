@@ -12,25 +12,28 @@
 
 ActiveRecord::Schema.define(version: 20161115183535) do
 
-  create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "cards", force: :cascade do |t|
     t.string   "title"
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "type"
     t.integer  "project_id"
     t.string   "slug"
-    t.string   "status",                    default: "unarchived"
+    t.string   "status"
     t.index ["project_id"], name: "index_project_id", using: :btree
   end
 
-  create_table "cards_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "cards_users", id: false, force: :cascade do |t|
     t.integer "card_id"
     t.integer "user_id"
     t.index ["card_id", "user_id"], name: "index_cards_users_on_card_id_and_user_id", using: :btree
   end
 
-  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
     t.datetime "created_at",  null: false
@@ -39,13 +42,13 @@ ActiveRecord::Schema.define(version: 20161115183535) do
     t.string   "status"
   end
 
-  create_table "projects_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "projects_users", id: false, force: :cascade do |t|
     t.integer "project_id"
     t.integer "user_id"
     t.index ["project_id", "user_id"], name: "index_projects_users_on_project_id_and_user_id", using: :btree
   end
 
-  create_table "teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  null: false
@@ -53,20 +56,20 @@ ActiveRecord::Schema.define(version: 20161115183535) do
     t.string   "slug"
   end
 
-  create_table "teams_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "teams_users", id: false, force: :cascade do |t|
     t.integer "team_id"
     t.integer "user_id"
     t.index ["team_id", "user_id"], name: "index_teams_users_on_team_id_and_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "provider",                             default: "email", null: false
-    t.string   "uid",                                  default: "",      null: false
-    t.string   "encrypted_password",                   default: "",      null: false
+  create_table "users", force: :cascade do |t|
+    t.string   "provider",               default: "email", null: false
+    t.string   "uid",                    default: "",      null: false
+    t.string   "encrypted_password",     default: "",      null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                        default: 0,       null: false
+    t.integer  "sign_in_count",          default: 0,       null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -79,7 +82,7 @@ ActiveRecord::Schema.define(version: 20161115183535) do
     t.string   "nickname"
     t.string   "image"
     t.string   "email"
-    t.text     "tokens",                 limit: 65535
+    t.text     "tokens"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"

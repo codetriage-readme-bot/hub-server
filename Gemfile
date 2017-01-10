@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 gem 'rails', '5.0.0'
 gem 'spring', :group => :development
-gem 'mysql2'
+gem 'pg'
 gem 'devise_token_auth', git: 'git://github.com/lynndylanhurley/devise_token_auth.git'
 gem 'omniauth'
 gem 'devise', '4.0.0.rc2'
